@@ -1,0 +1,19 @@
+# Dependencies
+node_modules
+**/node_modules
+
+# Build outputs
+dist
+build
+.next
+.turbo
+
+# Misc
+.DS_Store
+*.log
+coverage
+.env*
+pnpm-lock.yaml
+
+# React Router
+.react-router
