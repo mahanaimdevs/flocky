@@ -4,10 +4,10 @@
   "description": "",
   "scripts": {
     "dev": "tsx watch src/app.ts",
-    "lint": "eslint --fix src",
-    "lint:check": "eslint src",
-    "format": "prettier --write \"src/**/*.{ts,js,json}\"",
-    "format:check": "prettier --check \"src/**/*.{ts,js,json}\"",
+    "lint": "eslint --fix .",
+    "lint:check": "eslint .",
+    "format": "prettier --write \"**/*.{ts,js,json}\"",
+    "format:check": "prettier --check \"**/*.{ts,js,json}\"",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "db:push": "drizzle-kit push",
@@ -18,18 +18,21 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@t3-oss/env-core": "^0.13.10",
     "dotenv": "^17.2.3",
     "drizzle-orm": "^0.45.1",
     "express": "^5.2.1",
-    "pg": "^8.17.2"
+    "pg": "^8.17.2",
+    "zod": "^4.3.5"
   },
   "devDependencies": {
     "@flocky/eslint-config": "workspace:^",
+    "@flocky/typescript-config": "workspace:^",
     "@types/express": "^5.0.6",
     "@types/node": "^22",
-    "eslint": "^8.57.1",
     "@types/pg": "^8.16.0",
     "drizzle-kit": "^0.31.8",
+    "eslint": "^8.57.1",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3"
   }
