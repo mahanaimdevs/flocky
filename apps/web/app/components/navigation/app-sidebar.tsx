@@ -54,8 +54,9 @@ const data: SidebarData = {
       title: "목장",
       icon: <HomeIcon />,
       items: [
-        { title: "내 목장", url: "#" },
-        { title: "목장 검색", url: "#" },
+        // TODO: Replace hardcoded ID with user's cell group ID from auth
+        { title: "내 목장", url: "/app/cell-groups/1" },
+        { title: "목장 검색", url: "/app/cell-groups" },
       ],
     },
     {
