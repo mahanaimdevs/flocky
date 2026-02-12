@@ -1,4 +1,4 @@
-import { BellIcon } from "lucide-react";
+import { BellIcon, InboxIcon } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -9,6 +9,13 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import {
+  Empty,
+  EmptyDescription,
+  EmptyHeader,
+  EmptyMedia,
+  EmptyTitle,
+} from "@/components/ui/empty";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
 const notifications = [
@@ -80,27 +87,41 @@ export function Notifications() {
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" size="icon" className="relative">
           <BellIcon className="size-4" />
-          <span className="bg-destructive absolute -top-0.5 -right-0.5 size-2 rounded-full" />
+          {notifications.length > 0 && (
+            <span className="bg-destructive absolute -top-0.5 -right-0.5 size-2 rounded-full" />
+          )}
           <span className="sr-only">알림</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-80">
         <DropdownMenuLabel>알림</DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <ScrollArea className="max-h-80">
-          {notifications.map((notification) => (
-            <DropdownMenuItem
-              key={notification.id}
-              className="flex flex-col items-start gap-1 py-3"
-            >
-              <div className="flex w-full items-center justify-between">
-                <span className="text-sm font-medium">{notification.title}</span>
-                <span className="text-muted-foreground text-xs">{notification.time}</span>
-              </div>
-              <span className="text-muted-foreground text-xs">{notification.description}</span>
-            </DropdownMenuItem>
-          ))}
-        </ScrollArea>
+        {notifications.length > 0 ? (
+          <ScrollArea className="max-h-80">
+            {notifications.map((notification) => (
+              <DropdownMenuItem
+                key={notification.id}
+                className="flex flex-col items-start gap-1 py-3"
+              >
+                <div className="flex w-full items-center justify-between">
+                  <span className="text-sm font-medium">{notification.title}</span>
+                  <span className="text-muted-foreground text-xs">{notification.time}</span>
+                </div>
+                <span className="text-muted-foreground text-xs">{notification.description}</span>
+              </DropdownMenuItem>
+            ))}
+          </ScrollArea>
+        ) : (
+          <Empty className="py-6">
+            <EmptyHeader>
+              <EmptyMedia variant="icon">
+                <InboxIcon />
+              </EmptyMedia>
+              <EmptyTitle>알림이 없습니다</EmptyTitle>
+              <EmptyDescription>새로운 알림이 오면 여기에 표시됩니다.</EmptyDescription>
+            </EmptyHeader>
+          </Empty>
+        )}
       </DropdownMenuContent>
     </DropdownMenu>
   );
