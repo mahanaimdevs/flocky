@@ -1,6 +1,6 @@
 [build]
 builder = "NIXPACKS"
-buildCommand = "cd ../.. && pnpm install --frozen-lockfile && pnpm --filter=web run build"
+buildCommand = "pnpm install --frozen-lockfile && pnpm --filter=web run build"
 watchPatterns = ["apps/web/**", "packages/**"]
 
 [deploy]
