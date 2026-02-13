@@ -1,5 +1,5 @@
 [build]
-builder = "NIXPACKS"
+builder = "railpack"
 buildCommand = "pnpm install --frozen-lockfile && pnpm --filter=docs run build"
 watchPatterns = ["apps/docs/**", "packages/**"]
 
