@@ -25,12 +25,15 @@ class CellGroupController(
     fun getAll(): List<CellGroupResponse> = cellGroupService.getAll()
 
     @GetMapping("/{id}")
-    fun getById(@PathVariable id: UUID): CellGroupResponse = cellGroupService.getById(id)
+    fun getById(
+        @PathVariable id: UUID,
+    ): CellGroupResponse = cellGroupService.getById(id)
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    fun create(@Valid @RequestBody request: CreateCellGroupRequest): CellGroupResponse =
-        cellGroupService.create(request)
+    fun create(
+        @Valid @RequestBody request: CreateCellGroupRequest,
+    ): CellGroupResponse = cellGroupService.create(request)
 
     @PutMapping("/{id}")
     fun update(
@@ -40,5 +43,7 @@ class CellGroupController(
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    fun delete(@PathVariable id: UUID) = cellGroupService.delete(id)
+    fun delete(
+        @PathVariable id: UUID,
+    ) = cellGroupService.delete(id)
 }

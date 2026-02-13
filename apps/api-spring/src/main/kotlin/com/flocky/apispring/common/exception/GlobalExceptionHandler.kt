@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice
 
 @RestControllerAdvice
 class GlobalExceptionHandler {
-
     @ExceptionHandler(NotFoundException::class)
     fun handleNotFound(ex: NotFoundException): ResponseEntity<ErrorResponse> =
         ResponseEntity
@@ -23,8 +22,9 @@ class GlobalExceptionHandler {
 
     @ExceptionHandler(MethodArgumentNotValidException::class)
     fun handleValidation(ex: MethodArgumentNotValidException): ResponseEntity<ErrorResponse> {
-        val message = ex.bindingResult.fieldErrors
-            .joinToString(", ") { "${it.field}: ${it.defaultMessage}" }
+        val message =
+            ex.bindingResult.fieldErrors
+                .joinToString(", ") { "${it.field}: ${it.defaultMessage}" }
         return ResponseEntity
             .status(HttpStatus.BAD_REQUEST)
             .body(ErrorResponse(status = 400, message = message))

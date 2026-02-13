@@ -35,17 +35,22 @@ class AuthService(
     }
 
     @Transactional
-    fun register(request: RegisterRequest, ipAddress: String?, userAgent: String?): AuthResponse {
+    fun register(
+        request: RegisterRequest,
+        ipAddress: String?,
+        userAgent: String?,
+    ): AuthResponse {
         if (userRepository.findByEmail(request.email) != null) {
             throw IllegalArgumentException("Email already in use")
         }
 
-        val user = userRepository.save(
-            User(
-                email = request.email,
-                name = request.name,
-            ),
-        )
+        val user =
+            userRepository.save(
+                User(
+                    email = request.email,
+                    name = request.name,
+                ),
+            )
 
         accountRepository.save(
             Account(
@@ -73,9 +78,14 @@ class AuthService(
     }
 
     @Transactional
-    fun login(request: LoginRequest, ipAddress: String?, userAgent: String?): AuthResponse {
-        val account = accountRepository.findByProviderAndProviderAccountId("credentials", request.email)
-            ?: throw IllegalArgumentException("Invalid email or password")
+    fun login(
+        request: LoginRequest,
+        ipAddress: String?,
+        userAgent: String?,
+    ): AuthResponse {
+        val account =
+            accountRepository.findByProviderAndProviderAccountId("credentials", request.email)
+                ?: throw IllegalArgumentException("Invalid email or password")
 
         if (!passwordEncoder.matches(request.password, account.password)) {
             throw IllegalArgumentException("Invalid email or password")
@@ -94,15 +104,17 @@ class AuthService(
 
     @Transactional
     fun verifyEmail(request: VerifyEmailRequest) {
-        val verification = verificationRepository.findByIdentifierAndValue(request.identifier, request.value)
-            ?: throw IllegalArgumentException("Invalid verification token")
+        val verification =
+            verificationRepository.findByIdentifierAndValue(request.identifier, request.value)
+                ?: throw IllegalArgumentException("Invalid verification token")
 
         if (verification.expiresAt.isBefore(Instant.now())) {
             throw IllegalArgumentException("Verification token has expired")
         }
 
-        val user = userRepository.findByEmail(verification.identifier)
-            ?: throw IllegalArgumentException("User not found")
+        val user =
+            userRepository.findByEmail(verification.identifier)
+                ?: throw IllegalArgumentException("User not found")
 
         user.emailVerified = true
         userRepository.save(user)
@@ -110,7 +122,11 @@ class AuthService(
         verificationRepository.deleteByIdentifier(verification.identifier)
     }
 
-    private fun createSession(user: User, ipAddress: String?, userAgent: String?): Session =
+    private fun createSession(
+        user: User,
+        ipAddress: String?,
+        userAgent: String?,
+    ): Session =
         sessionRepository.save(
             Session(
                 user = user,
@@ -121,15 +137,19 @@ class AuthService(
             ),
         )
 
-    private fun toAuthResponse(token: String, user: User): AuthResponse =
+    private fun toAuthResponse(
+        token: String,
+        user: User,
+    ): AuthResponse =
         AuthResponse(
             token = token,
-            user = AuthResponse.UserInfo(
-                id = user.id!!,
-                email = user.email,
-                name = user.name,
-                emailVerified = user.emailVerified,
-            ),
+            user =
+                AuthResponse.UserInfo(
+                    id = user.id!!,
+                    email = user.email,
+                    name = user.name,
+                    emailVerified = user.emailVerified,
+                ),
         )
 
     private fun generateToken(): String {

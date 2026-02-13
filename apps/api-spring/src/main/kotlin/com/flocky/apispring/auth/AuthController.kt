@@ -44,15 +44,19 @@ class AuthController(
     @PostMapping("/logout")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     fun logout(httpRequest: HttpServletRequest) {
-        val token = httpRequest.getHeader("Authorization")
-            ?.removePrefix("Bearer ")
-            ?: return
+        val token =
+            httpRequest
+                .getHeader("Authorization")
+                ?.removePrefix("Bearer ")
+                ?: return
         authService.logout(token)
     }
 
     @PostMapping("/verify-email")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    fun verifyEmail(@Valid @RequestBody request: VerifyEmailRequest) {
+    fun verifyEmail(
+        @Valid @RequestBody request: VerifyEmailRequest,
+    ) {
         authService.verifyEmail(request)
     }
 }

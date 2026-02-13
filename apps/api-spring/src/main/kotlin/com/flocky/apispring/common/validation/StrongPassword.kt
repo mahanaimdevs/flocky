@@ -16,13 +16,15 @@ annotation class StrongPassword(
 )
 
 class StrongPasswordValidator : ConstraintValidator<StrongPassword, String> {
-
     companion object {
         private const val MIN_LENGTH = 8
         private const val MAX_LENGTH = 128
     }
 
-    override fun isValid(value: String?, context: ConstraintValidatorContext): Boolean {
+    override fun isValid(
+        value: String?,
+        context: ConstraintValidatorContext,
+    ): Boolean {
         if (value == null) return false
 
         val violations = mutableListOf<String>()
@@ -48,9 +50,10 @@ class StrongPasswordValidator : ConstraintValidator<StrongPassword, String> {
 
         if (violations.isNotEmpty()) {
             context.disableDefaultConstraintViolation()
-            context.buildConstraintViolationWithTemplate(
-                "Password ${violations.joinToString(", ")}",
-            ).addConstraintViolation()
+            context
+                .buildConstraintViolationWithTemplate(
+                    "Password ${violations.joinToString(", ")}",
+                ).addConstraintViolation()
             return false
         }
 

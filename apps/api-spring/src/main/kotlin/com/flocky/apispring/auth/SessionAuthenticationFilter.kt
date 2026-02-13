@@ -15,7 +15,6 @@ import java.time.Instant
 class SessionAuthenticationFilter(
     private val sessionRepository: SessionRepository,
 ) : OncePerRequestFilter() {
-
     override fun doFilterInternal(
         request: HttpServletRequest,
         response: HttpServletResponse,
@@ -28,11 +27,12 @@ class SessionAuthenticationFilter(
 
             if (session != null && session.expiresAt.isAfter(Instant.now())) {
                 val user = session.user
-                val authentication = UsernamePasswordAuthenticationToken(
-                    user,
-                    null,
-                    emptyList(),
-                )
+                val authentication =
+                    UsernamePasswordAuthenticationToken(
+                        user,
+                        null,
+                        emptyList(),
+                    )
                 authentication.details = WebAuthenticationDetailsSource().buildDetails(request)
                 SecurityContextHolder.getContext().authentication = authentication
             }
