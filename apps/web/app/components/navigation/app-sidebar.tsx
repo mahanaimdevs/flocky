@@ -68,7 +68,7 @@ const data: SidebarData = {
     },
     {
       title: "달력",
-      url: "#",
+      url: "/app/calendar",
       icon: <CalendarIcon />,
     },
     {

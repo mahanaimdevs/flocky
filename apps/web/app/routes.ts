@@ -14,6 +14,7 @@ export default [
         route("new-members", "routes/app/members/new-members.tsx"),
         route(":id", "routes/app/members/details.tsx"),
       ]),
+      route("calendar", "routes/app/calendar.tsx"),
     ]),
   ]),
 ] satisfies RouteConfig as RouteConfig;
