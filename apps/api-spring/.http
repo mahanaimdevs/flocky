@@ -1,0 +1,29 @@
+### Health check
+GET http://localhost:8081
+
+### List all cell groups
+GET http://localhost:8081/api/cell-groups
+
+### Get cell group by ID
+GET http://localhost:8081/api/cell-groups/1
+
+### Create cell group
+POST http://localhost:8081/api/cell-groups
+Content-Type: application/json
+
+{
+  "name": "Alpha Group",
+  "description": "First cell group"
+}
+
+### Update cell group
+PUT http://localhost:8081/api/cell-groups/1
+Content-Type: application/json
+
+{
+  "name": "Alpha Group Updated",
+  "description": "Updated description"
+}
+
+### Delete cell group
+DELETE http://localhost:8081/api/cell-groups/1
