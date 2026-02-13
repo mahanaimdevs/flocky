@@ -1,7 +1,7 @@
 import { desc } from "drizzle-orm";
 
-import { db } from "../db/index";
-import { smallGroups } from "../db/schema";
+import { db } from "../db/index.js";
+import { smallGroups } from "../db/schema.js";
 
 type NewSmallGroup = typeof smallGroups.$inferInsert;
 

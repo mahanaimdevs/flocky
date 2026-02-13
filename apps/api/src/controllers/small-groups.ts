@@ -1,6 +1,6 @@
 import type { Request, Response } from "express";
 
-import * as smallGroupsService from "../services/small-groups";
+import * as smallGroupsService from "../services/small-groups.js";
 
 export const create = async (req: Request, res: Response) => {
   try {

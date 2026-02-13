@@ -13,7 +13,7 @@ public/dist
 
 # React Router
 **/.react-router/
-/build/
+**/build/
 
 coverage/
 *.tsbuildinfo

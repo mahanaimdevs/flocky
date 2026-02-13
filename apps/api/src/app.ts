@@ -1,7 +1,7 @@
 import cors from "cors";
 import express from "express";
 
-import smallGroupsRouter from "./routes/small-groups";
+import smallGroupsRouter from "./routes/small-groups.js";
 
 const app = express();
 const port = process.env.PORT ?? 8080;
