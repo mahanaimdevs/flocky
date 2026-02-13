@@ -1,0 +1,9 @@
+[build]
+builder = "NIXPACKS"
+buildCommand = "pnpm install --frozen-lockfile && pnpm --filter=docs run build"
+watchPatterns = ["apps/docs/**", "packages/**"]
+
+[deploy]
+startCommand = "pnpm --filter=docs run start"
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 10
