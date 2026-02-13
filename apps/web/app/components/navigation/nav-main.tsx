@@ -1,4 +1,4 @@
-import { ChevronRightIcon } from "lucide-react";
+import { ChevronDownIcon, ChevronRightIcon } from "lucide-react";
 import { Link } from "react-router";
 
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
@@ -43,7 +43,8 @@ export function NavMain({ items }: { items: NavMainItem[] }) {
                       <SidebarMenuButton tooltip={item.title}>
                         {item.icon}
                         <span>{item.title}</span>
-                        <ChevronRightIcon className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
+                        <ChevronRightIcon className="ml-auto group-data-[state=open]/menu-item:hidden" />
+                        <ChevronDownIcon className="ml-auto hidden group-data-[state=open]/menu-item:block" />
                       </SidebarMenuButton>
                     </CollapsibleTrigger>
                     <CollapsibleContent>

@@ -34,7 +34,7 @@ function Navbar() {
             로그인
           </Link>
           <Button asChild>
-            <Link to="/dashboard">
+            <Link to="/app/dashboard">
               시작하기
               <ArrowRight className="size-4" />
             </Link>
