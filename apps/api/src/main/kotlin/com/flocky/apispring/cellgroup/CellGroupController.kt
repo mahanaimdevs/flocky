@@ -17,14 +17,14 @@ import org.springframework.web.bind.annotation.RestController
 import java.util.UUID
 
 @RestController
-@RequestMapping("/api/cell-groups")
+@RequestMapping("cell-groups")
 class CellGroupController(
     private val cellGroupService: CellGroupService,
 ) {
     @GetMapping
     fun getAll(): List<CellGroupResponse> = cellGroupService.getAll()
 
-    @GetMapping("/{id}")
+    @GetMapping("{id}")
     fun getById(
         @PathVariable id: UUID,
     ): CellGroupResponse = cellGroupService.getById(id)
@@ -35,13 +35,13 @@ class CellGroupController(
         @Valid @RequestBody request: CreateCellGroupRequest,
     ): CellGroupResponse = cellGroupService.create(request)
 
-    @PutMapping("/{id}")
+    @PutMapping("{id}")
     fun update(
         @PathVariable id: UUID,
         @Valid @RequestBody request: UpdateCellGroupRequest,
     ): CellGroupResponse = cellGroupService.update(id, request)
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     fun delete(
         @PathVariable id: UUID,

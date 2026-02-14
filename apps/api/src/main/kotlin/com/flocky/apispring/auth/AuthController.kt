@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping("auth")
 class AuthController(
     private val authService: AuthService,
 ) {
-    @PostMapping("/register")
+    @PostMapping("register")
     @ResponseStatus(HttpStatus.CREATED)
     fun register(
         @Valid @RequestBody request: RegisterRequest,
@@ -30,7 +30,7 @@ class AuthController(
             userAgent = httpRequest.getHeader("User-Agent"),
         )
 
-    @PostMapping("/login")
+    @PostMapping("login")
     fun login(
         @Valid @RequestBody request: LoginRequest,
         httpRequest: HttpServletRequest,
@@ -41,7 +41,7 @@ class AuthController(
             userAgent = httpRequest.getHeader("User-Agent"),
         )
 
-    @PostMapping("/logout")
+    @PostMapping("logout")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     fun logout(httpRequest: HttpServletRequest) {
         val token =
@@ -52,7 +52,7 @@ class AuthController(
         authService.logout(token)
     }
 
-    @PostMapping("/verify-email")
+    @PostMapping("verify-email")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     fun verifyEmail(
         @Valid @RequestBody request: VerifyEmailRequest,
