@@ -76,3 +76,21 @@ Authorization: Bearer <session-token>
 ### Delete cell group
 DELETE http://localhost:8080/api/cell-groups/1
 Authorization: Bearer <session-token>
+
+## Users
+
+### List all users (default: page 0, size 20)
+GET http://localhost:8080/api/users
+Authorization: Bearer <session-token>
+
+### List users with pagination
+GET http://localhost:8080/api/users?page=0&size=10
+Authorization: Bearer <session-token>
+
+### Search users by name or email
+GET http://localhost:8080/api/users?search=test
+Authorization: Bearer <session-token>
+
+### Search users with pagination
+GET http://localhost:8080/api/users?search=test&page=0&size=10
+Authorization: Bearer <session-token>
