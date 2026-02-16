@@ -12,17 +12,20 @@
   "publishConfig": {
     "access": "public"
   },
-  "devDependencies": {
-    "@types/eslint": "^9.6.1",
+  "dependencies": {
     "@typescript-eslint/eslint-plugin": "^8.53.1",
     "@typescript-eslint/parser": "^8.53.1",
-    "eslint": "^8.57.1",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.2.3",
-    "prettier": "^3.5.0",
     "eslint-plugin-unicorn": "^55.0.0"
   },
+  "devDependencies": {
+    "@types/eslint": "^9.6.1",
+    "eslint": "^8.57.1",
+    "prettier": "^3.5.0"
+  },
   "peerDependencies": {
-    "eslint": "^8.0.0"
+    "eslint": "^8.0.0",
+    "prettier": "^3.0.0"
   }
 }
