@@ -10,5 +10,6 @@
     "test": "./gradlew test",
     "lint": "./gradlew ktlintFormat",
     "lint:check": "./gradlew ktlintCheck"
-  }
+  },
+  "dependencies": {}
 }
