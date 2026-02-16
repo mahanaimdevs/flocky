@@ -10,7 +10,15 @@ Content-Type: application/json
 {
   "email": "test@example.com",
   "password": "Password123!",
-  "name": "Test User"
+  "name": "Test User",
+  "gender": "MALE",
+  "birthday": "2000-02-22",
+  "addressStreet": "123 Queen Street",
+  "addressCity": "Auckland",
+  "addressState": "Auckland",
+  "addressPostalCode": "1010",
+  "addressCountry": "New Zealand",
+  "phoneNumber": "+64278983325"
 }
 
 ### Login
