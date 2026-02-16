@@ -14,9 +14,24 @@ importers:
       '@ianvs/prettier-plugin-sort-imports':
         specifier: ^4.7.0
         version: 4.7.1(prettier@3.8.1)
+      '@typescript-eslint/eslint-plugin':
+        specifier: ^8.53.1
+        version: 8.55.0(@typescript-eslint/parser@8.55.0(eslint@8.57.1)(typescript@5.9.3))(eslint@8.57.1)(typescript@5.9.3)
+      '@typescript-eslint/parser':
+        specifier: ^8.53.1
+        version: 8.55.0(eslint@8.57.1)(typescript@5.9.3)
       eslint:
         specifier: ^8.57.1
         version: 8.57.1
+      eslint-config-prettier:
+        specifier: ^10.1.8
+        version: 10.1.8(eslint@8.57.1)
+      eslint-plugin-prettier:
+        specifier: ^5.2.3
+        version: 5.5.5(@types/eslint@9.6.1)(eslint-config-prettier@10.1.8(eslint@8.57.1))(eslint@8.57.1)(prettier@3.8.1)
+      eslint-plugin-unicorn:
+        specifier: ^55.0.0
+        version: 55.0.0(eslint@8.57.1)
       prettier:
         specifier: ^3.2.5
         version: 3.8.1
@@ -215,19 +230,13 @@ importers:
         version: 5.1.4(typescript@5.9.3)(vite@7.3.1(@types/node@22.19.11)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.46.0)(tsx@4.21.0))
 
   packages/eslint-config:
-    devDependencies:
-      '@types/eslint':
-        specifier: ^9.6.1
-        version: 9.6.1
+    dependencies:
       '@typescript-eslint/eslint-plugin':
         specifier: ^8.53.1
         version: 8.55.0(@typescript-eslint/parser@8.55.0(eslint@8.57.1)(typescript@5.9.3))(eslint@8.57.1)(typescript@5.9.3)
       '@typescript-eslint/parser':
         specifier: ^8.53.1
         version: 8.55.0(eslint@8.57.1)(typescript@5.9.3)
-      eslint:
-        specifier: ^8.57.1
-        version: 8.57.1
       eslint-config-prettier:
         specifier: ^10.1.8
         version: 10.1.8(eslint@8.57.1)
@@ -237,6 +246,13 @@ importers:
       eslint-plugin-unicorn:
         specifier: ^55.0.0
         version: 55.0.0(eslint@8.57.1)
+    devDependencies:
+      '@types/eslint':
+        specifier: ^9.6.1
+        version: 9.6.1
+      eslint:
+        specifier: ^8.57.1
+        version: 8.57.1
       prettier:
         specifier: ^3.5.0
         version: 3.8.1
