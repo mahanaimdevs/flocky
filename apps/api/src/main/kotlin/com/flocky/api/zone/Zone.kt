@@ -1,15 +1,11 @@
-package com.flocky.api.cellgroup
+package com.flocky.api.zone
 
-import com.flocky.api.zone.Zone
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.EntityListeners
-import jakarta.persistence.FetchType
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
-import jakarta.persistence.JoinColumn
-import jakarta.persistence.ManyToOne
 import jakarta.persistence.Table
 import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.annotation.LastModifiedDate
@@ -18,22 +14,19 @@ import java.time.Instant
 import java.util.UUID
 
 @Entity
-@Table(name = "cell_groups")
+@Table(name = "zones")
 @EntityListeners(AuditingEntityListener::class)
-class CellGroup(
+class Zone(
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(columnDefinition = "UUID")
     val id: UUID? = null,
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TEXT")
     var name: String,
 
-    var description: String? = null,
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "zone_id")
-    var zone: Zone? = null,
+    @Column(name = "registered_at")
+    var registeredAt: Instant? = null,
 
     @CreatedDate
     @Column(name = "created_at", nullable = false, updatable = false)
