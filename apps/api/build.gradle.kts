@@ -54,3 +54,7 @@ allOpen {
 }
 
 tasks.withType<Test> { useJUnitPlatform() }
+
+tasks.bootRun {
+    mainClass.set("com.flocky.api.ApiApplicationKt")
+}

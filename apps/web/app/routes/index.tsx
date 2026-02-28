@@ -202,7 +202,7 @@ export default function Home() {
 
               <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
                 <Button asChild size="lg" className="h-12 px-8 text-base">
-                  <Link to="/dashboard">
+                  <Link to="/app/dashboard">
                     무료로 시작하기
                     <ArrowRight className="size-4" />
                   </Link>
@@ -341,7 +341,7 @@ export default function Home() {
                 </p>
                 <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
                   <Button asChild size="lg" variant="secondary" className="h-12 px-8 text-base">
-                    <Link to="/dashboard">
+                    <Link to="/app/dashboard">
                       무료로 시작하기
                       <ArrowRight className="size-4" />
                     </Link>

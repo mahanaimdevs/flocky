@@ -2,48 +2,38 @@
 
 A modern monorepo application built with Turborepo.
 
+## Quick Start
+
+```bash
+./dev.sh
+```
+
+Checks prerequisites, installs dependencies, starts the database, and launches all dev servers. Use `--setup-only` to skip launching servers.
+
+| Service | URL |
+| ------- | --- |
+| Web | http://localhost:5173 |
+| API | http://localhost:8080/api |
+| Docs | http://localhost:3000 |
+
 ## Prerequisites
 
-- [fnm](https://github.com/Schniz/fnm) (Fast Node Manager)
-- [Node.js](https://nodejs.org/) v24.13.0 (install via `fnm use` or `fnm install`)
-- [pnpm](https://pnpm.io/)
+- [fnm](https://github.com/Schniz/fnm) — Node version manager
+- [SDKMAN](https://sdkman.io/) — Java version manager
+- [Docker](https://docs.docker.com/get-docker/) and Docker Compose
+- [pnpm](https://pnpm.io/installation) v10+
 
-## Getting Started
+## Stopping
 
-### 1. Install Node.js
+Press `Ctrl+C`, then:
 
-Use fnm to install and activate the correct Node.js version:
-
-```sh
-fnm use
+```bash
+docker compose -f apps/api/docker-compose.yaml down
 ```
 
-### 2. Install Dependencies
+## Troubleshooting
 
-```sh
-pnpm install
-```
-
-### 3. Set Up the Frontend
-
-Copy the example environment file:
-
-```sh
-cp apps/web/.env-example apps/web/.env
-```
-
-Update the values in `apps/web/.env` as needed. See the [Web README](apps/web/README.md) for more details.
-
-### 4. Set Up the Backend
-
-Follow the setup instructions in the [API README](apps/api/README.md) to configure the database and environment variables.
-
-### 5. Start Development
-
-From the root directory:
-
-```sh
-pnpm dev
-```
-
-This will start all apps in development mode.
+- **Node version mismatch** — run `fnm use` from the project root.
+- **Java version mismatch** — run `sdk env` from `apps/api`.
+- **Database connection refused** — check `docker ps`; make sure port 5435 is free.
+- **CORS errors** — the API allows `http://localhost:5173` by default. Set `CORS_ALLOWED_ORIGINS` if the frontend runs on a different port.
